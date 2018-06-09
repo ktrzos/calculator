@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Button extends Component {
     render() {
-        let className = 'CalculatorButton CalculatorButton--' + this.props.label;
+        let className = 'calculator__button calculator__button--' + this.props.label;
 
         return (
             <button className={className}>
