@@ -6,7 +6,7 @@ class Button extends Component {
         let className = 'calculator__button calculator__button--' + this.props.label;
 
         return (
-            <button className={className}>
+            <button className={className} onClick={this.props.onClickHandler}>
                 {this.props.label}
             </button>
         );
@@ -14,7 +14,8 @@ class Button extends Component {
 }
 
 Button.propTypes = {
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    onClickHandler: PropTypes.func
 };
 
 export default Button;
