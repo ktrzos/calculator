@@ -26,9 +26,17 @@ class App extends Component {
                 });
                 break;
             case '=':
-                this.setState({
-                    input: App.calculate(this.state.input)
-                });
+                try {
+                    this.setState({
+                        input: App.calculate(this.state.input)
+                    });
+                } catch(e) {
+                    if(e instanceof SyntaxError) {
+
+                    } else {
+                        throw e;
+                    }
+                }
                 break;
             default:
                 this.setState({
@@ -40,6 +48,7 @@ class App extends Component {
     /**
      * @param {string} expr
      * @returns {number}
+     * @throws SyntaxError
      */
     static calculate(expr) {
         return math.eval(expr);
