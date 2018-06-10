@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const Button = (props) => {
     /**
+     * @param {string} buttonLabel
      * @returns {string}
      */
     const buttonCssClass = (buttonLabel) => {

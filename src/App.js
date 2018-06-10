@@ -4,6 +4,10 @@ import Button from './components/Button/Button';
 import math from 'mathjs';
 
 class App extends Component {
+    /**
+     * @param {array} props
+     * @return void
+     */
     constructor(props) {
         super(props);
 
@@ -15,6 +19,10 @@ class App extends Component {
         this.buttonClickHandler = this.buttonClickHandler.bind(this);
     }
 
+    /**
+     * @param {Object} e
+     * @return void
+     */
     buttonClickHandler(e) {
         e.preventDefault();
 
