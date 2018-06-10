@@ -13,6 +13,10 @@ body {
     box-sizing: border-box;
 }
 
+.calculator__input--error {
+    border-color: red;
+}
+
 .calculator__board {
     width: 100%;
     display: grid;

@@ -8,7 +8,8 @@ class App extends Component {
         super(props);
 
         this.state = {
-            input: ''
+            input: '',
+            inputError: false
         };
 
         this.buttonClickHandler = this.buttonClickHandler.bind(this);
@@ -22,17 +23,21 @@ class App extends Component {
         switch(character) {
             case 'CE':
                 this.setState({
-                    input: ''
+                    input: '',
+                    inputError: false,
                 });
                 break;
             case '=':
                 try {
                     this.setState({
-                        input: App.calculate(this.state.input)
+                        input: App.calculate(this.state.input),
+                        inputError: false
                     });
                 } catch(e) {
                     if(e instanceof SyntaxError) {
-
+                        this.setState({
+                            inputError: true,
+                        });
                     } else {
                         throw e;
                     }
@@ -54,6 +59,19 @@ class App extends Component {
         return math.eval(expr);
     }
 
+    /**
+     * @returns {string}
+     */
+    inputCssClass() {
+        let className = 'calculator__input';
+
+        if(this.state.inputError === true) {
+            className += ' calculator__input--error';
+        }
+
+        return className;
+    }
+
     render() {
         let board_items = [
             7, 8, 9, 'CE',
@@ -65,7 +83,7 @@ class App extends Component {
         return (
             <div className="calculator">
                 <input
-                    className="calculator__input"
+                    className={this.inputCssClass()}
                     name="input"
                     type="text"
                     value={this.state.input}
