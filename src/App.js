@@ -64,9 +64,12 @@ class App extends Component {
 
         return (
             <div className="calculator">
-                <div className="calculator__input">
-                    <input name="input" type="text" value={this.state.input}/>
-                </div>
+                <input
+                    className="calculator__input"
+                    name="input"
+                    type="text"
+                    value={this.state.input}
+                />
                 <div className="calculator__board">
                     {board_items.map(item => {
                         return <Button
