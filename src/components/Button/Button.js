@@ -23,7 +23,10 @@ class Button extends Component {
 }
 
 Button.propTypes = {
-    label: PropTypes.string.isRequired,
+    label: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ]).isRequired,
     onClickHandler: PropTypes.func
 };
 
