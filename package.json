@@ -1,5 +1,5 @@
 {
-  "name": "Simple calculator",
+  "name": "simple_calculator",
   "version": "0.1.0",
   "private": true,
   "main": "main.js",
