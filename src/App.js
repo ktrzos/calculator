@@ -92,6 +92,7 @@ class App extends Component {
         return (
             <div className="calculator">
                 <input
+                    autoFocus
                     className={this.inputCssClass()}
                     name="input"
                     type="text"
