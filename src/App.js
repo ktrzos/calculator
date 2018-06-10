@@ -64,6 +64,8 @@ class App extends Component {
      * @throws SyntaxError
      */
     static calculate(expr) {
+        expr = expr.replace('%', '/100');
+
         /** @var {Function} math.eval */
         return math.eval(expr);
     }
