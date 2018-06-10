@@ -15,7 +15,16 @@ body {
 
 .calculator__board {
     width: 100%;
-    display: inline-grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 40px 40px 40px 40px;
+    display: grid;
+    grid-template-columns: repeat(6,calc(100%/6));
+    grid-template-rows: repeat(4, 40px);
+}
+
+.calculator__button--ce {
+    grid-column: 5 / span 2;
+}
+
+.calculator__button--61 { /* The "=" character. */
+    grid-column: 6;
+    grid-row: 2 / span 3;
 }

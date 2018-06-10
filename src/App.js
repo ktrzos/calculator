@@ -19,7 +19,7 @@ class App extends Component {
 
         let character = e.target.innerHTML;
 
-        switch (character) {
+        switch(character) {
             case 'CE':
                 this.setState({
                     input: ''
@@ -47,11 +47,10 @@ class App extends Component {
 
     render() {
         let board_items = [
-            '7', '8', '9', '+',
-            '4', '5', '6', '-',
-            '1', '2', '3', '/',
-            '0', ',', '*', '=',
-            'CE'
+            7, 8, 9, 'CE',
+            4, 5, 6, '-', '+', '=',
+            1, 2, 3, '/', '*',
+            0, ',', '%', '(', ')',
         ];
 
         return (
