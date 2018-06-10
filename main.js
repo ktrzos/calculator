@@ -7,7 +7,6 @@ let win = null;
 function createWindow() {
     win = new BrowserWindow({width: 1000, height: 600});
 
-    // win.loadURL('http://10.223.0.3:3000');
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'build/index.html'),
         protocol: 'file:',
