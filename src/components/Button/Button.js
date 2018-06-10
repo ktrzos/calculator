@@ -1,26 +1,31 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class Button extends Component {
-    render() {
-        let className     = 'calculator__button';
-        let classModifier = this.props.label;
+const Button = (props) => {
+    /**
+     * @returns {string}
+     */
+    const buttonCssClass = (buttonLabel) => {
+        let classModifier = buttonLabel;
 
-        if(this.props.label.length === 1) {
-            classModifier = this.props.label.charCodeAt(0);
-        } else if(typeof this.props.label === 'string') {
+        if(buttonLabel.length === 1) {
+            classModifier = buttonLabel.charCodeAt(0);
+        } else if(typeof buttonLabel === 'string') {
             classModifier = classModifier.toLowerCase();
         }
 
-        className += ' calculator__button--' + classModifier;
+        return 'calculator__button calculator__button--' + classModifier;
+    };
 
-        return (
-            <button className={className} onClick={this.props.onClickHandler}>
-                {this.props.label}
-            </button>
-        );
-    }
-}
+    return (
+        <button
+            className={buttonCssClass(props.label)}
+            onClick={props.onClickHandler}
+        >
+            {props.label}
+        </button>
+    );
+};
 
 Button.propTypes = {
     label: PropTypes.oneOfType([
