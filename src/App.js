@@ -56,6 +56,7 @@ class App extends Component {
      * @throws SyntaxError
      */
     static calculate(expr) {
+        /** @var {Function} math.eval */
         return math.eval(expr);
     }
 
