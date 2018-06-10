@@ -4,6 +4,8 @@ body {
 
 .calculator {
     width: 400px;
+    height: 210px;
+    overflow: hidden;
 }
 
 .calculator__input {
