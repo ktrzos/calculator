@@ -16,7 +16,9 @@ class App extends Component {
             inputError: false
         };
 
-        this.buttonClickHandler = this.buttonClickHandler.bind(this);
+        this.buttonClickHandler         = this.buttonClickHandler.bind(this);
+        this.inputChangeHandler         = this.inputChangeHandler.bind(this);
+        this.inputCalculateClickHandler = this.inputCalculateClickHandler.bind(this);
     }
 
     /**
@@ -36,20 +38,7 @@ class App extends Component {
                 });
                 break;
             case '=':
-                try {
-                    this.setState({
-                        input: App.calculate(this.state.input),
-                        inputError: false
-                    });
-                } catch(e) {
-                    if(e instanceof SyntaxError) {
-                        this.setState({
-                            inputError: true,
-                        });
-                    } else {
-                        throw e;
-                    }
-                }
+                this.calculate();
                 break;
             default:
                 this.setState({
@@ -59,15 +48,52 @@ class App extends Component {
     }
 
     /**
-     * @param {string} expr
-     * @returns {number}
-     * @throws SyntaxError
+     * @param {Object} e
+     * @return void
      */
-    static calculate(expr) {
-        expr = expr.replace('%', '/100');
+    inputChangeHandler(e) {
+        if(e.target.value.indexOf('=') === -1) {
+            this.setState({
+                input: e.target.value
+            });
+        }
+    }
 
-        /** @var {Function} math.eval */
-        return math.eval(expr);
+    /**
+     * @param {Object} e
+     * @return void
+     */
+    inputCalculateClickHandler(e) {
+        if(e.keyCode === 13) {
+            this.calculate();
+        }
+    }
+
+    /**
+     * @returns {number}
+     */
+    calculate() {
+        try {
+            let expr = this.state.input.replace('%', '/100');
+
+            /** @var {Function} math.eval */
+            const value = math.eval(expr);
+
+            if(this.state.input !== '') {
+                this.setState({
+                    input: value,
+                    inputError: false
+                });
+            }
+        } catch(e) {
+            if(e instanceof SyntaxError || e instanceof Error) {
+                this.setState({
+                    inputError: true,
+                });
+            } else {
+                throw e;
+            }
+        }
     }
 
     /**
@@ -99,6 +125,8 @@ class App extends Component {
                     name="input"
                     type="text"
                     value={this.state.input}
+                    onChange={this.inputChangeHandler}
+                    onKeyUp={this.inputCalculateClickHandler}
                 />
                 <div className="calculator__board">
                     {board_items.map(item => {
