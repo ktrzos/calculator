@@ -64,7 +64,7 @@ class App extends Component {
      * @return void
      */
     inputCalculateClickHandler(e) {
-        if(e.keyCode === 13) {
+        if(e.keyCode === 13) { // "ENTER" key
             this.calculate();
         }
     }
